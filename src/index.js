@@ -6,11 +6,10 @@ import { Provider } from 'react-redux'; // Import Provider untuk Redux
 import store from './store'; // Import store Redux yang telah dibuat
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from "@chakra-ui/react";
-import theme from "./chakra-theme";
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-  <ChakraProvider theme={theme}>
+  <ChakraProvider>
     <Provider store={store}>
       <React.StrictMode>
         <App />
