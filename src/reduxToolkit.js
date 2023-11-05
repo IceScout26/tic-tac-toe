@@ -4,7 +4,7 @@ export const gameSlice = createSlice({
   name: 'game',
   initialState: {
     squares: Array(9).fill(null),
-    status: 'Next player: X',
+    status: 'Now player: X',
   },
   reducers: {
     selectSquare: (state, action) => {
@@ -20,12 +20,12 @@ export const gameSlice = createSlice({
     },
     reset: (state) => {
       state.squares = Array(9).fill(null);
-      state.status = 'Next player: X';
+      state.status = 'Now player: X';
     },
   },
 });
 
-// Fungsi utilitas seperti calculateWinner, calculateStatus, dan calculateNextValue
+// Fungsi utilitas seperti calculateWinner, calculateStatus, dan calculateNowValue
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -52,12 +52,12 @@ function calculateStatus(squares, winner) {
   if (winner) {
     return `Winner: ${winner}`;
   } else if (squares.every(Boolean)) {
-    return "Scratch: Cat's game";
+    return "Draw!";
   } else {
-    return `Next player: ${calculateNextValue(squares)}`;
+    return `Now player: ${calculateNowValue(squares)}`;
   }
 }
 
-function calculateNextValue(squares) {
+function calculateNowValue(squares) {
   return squares.filter(Boolean).length % 2 === 0 ? 'X' : 'O';
 }
